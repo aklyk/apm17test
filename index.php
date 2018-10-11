@@ -1,134 +1,26 @@
 <?php
-
-    $PATHs = [
-        "task"=>"./task.php"
-    ];
-
-    require './php/general/db.php';
-    include './php/general/header.php';
-    include './php/general/func.php';
-    include './php/classes/user.php';
-
-    //if ( !isset($_COOKIE['id']) ) 
-    //    $user = new User(checkUser($conn));
-    //else
-    //    $user = new User($_COOKIE);
-
-	$user = new User(['id'=>1, 'login'=>'klykov', 'group'=>1]);
-
-    $urgent = [];
-    $current = [];
-    $PART = $user->getGroup();
-    $WEEK = identifyWeek(); 
-
-    $tasks = mysqli_query($conn, " SELECT * FROM `tasks` ");
-    while ( $task = mysqli_fetch_assoc($tasks) ) {
-        if ( calcDays($task["dateToPass"]) <= 7 )
-            array_push($urgent, $task);
-        else
-            array_push($current, $task);
-    }
- 
+    unset($_COOKIE);
 ?>
-        <main>
-            <div class="main">
 
-                <div class="topDeadLines">
-                    <h2>Срочные задания</h2>
-                    <?php
-                        foreach($urgent as $item) {
-                            echo "<div class='item urgent'>
-                                    <a href='task.php?id=" . $item["id"] . "'><p>
-                                        <span><b>" . $item['shortDesc'] . "</b></span>
-                                        <span>До времени сдачи <b>" . calcDays($item["dateToPass"]) . "</b></span>
-                                    </p></a>
-                                </div>";
-                        }
-                    ?>
-                </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Access</title>
+    <link rel="stylesheet" href="/access/access.css">
+</head>
+<body>
 
-                <div class="timetable">
-                    <h2>Расписание на сегодня, 
-					<?php
-						$day = "Fri"; //date('D');
-						switch ($day) {
-							case "Mon":
-								echo "понедельник";
-								break;
-							case "Tue":
-								echo "вторник";
-								break;
-							case "Wed":
-								echo "среда";
-								break;
-							case "Thu":
-								echo "четверг";
-								break;
-							case "Fri":
-								echo "пятница";
-								break;
-							case "Sat":
-								echo "суббота";
-								break;
-							case "Sun":
-								echo "воскресенье";
-								break;
-						}
-						echo " " . date("d") . "." . date("m") . "." . date("Y");
-					?>
-					</h2>
-                    <?php
-                        $day = 'Fri';//date('D');
-						
-						if ($day == 'Thu' || $day == 'Sat' || $day == 'Sun') {
-							echo '<p> Занятий нет </p>';
-						}
-						
-                        $subjs = mysqli_query($conn, " SELECT * FROM `timetable` WHERE `dayOfWeek`='$day' AND `part`='$PART' AND `week`='$WEEK' ");
-                        while($subj = mysqli_fetch_assoc($subjs)) {
-                            echo '<p>' . $subj['number'] . '. ' . $subj['name'] . '</p>';
-                        }
-                    ?>
-                </div>
-
-                <div class="allDeadlines">
-                <h2>Все задания</h2>
-                <?php
-                    foreach($urgent as $item) { //$current
-                        echo "<div class='item'>
-                                <a href='task.php?id=" . $item["id"] . "'><p>
-                                    <span><b>" . $item['shortDesc'] . "</b></span>
-                                    <span>До времени сдачи <b>" . calcDays($item["dateToPass"]) . "</b></span><br>
-                                </p></a>
-                            </div>";
-                        }
-                ?>
-                </div>
-
-            </div>
-            <aside>
-                <h2>Заметки</h2>
-                <?php
-                    $records = mysqli_query($conn, " SELECT * FROM `records` ");
-                    while ($record = mysqli_fetch_assoc($records)) {
-                        $link = $record["author"]?
-                        'https://sun9-4.userapi.com/c830708/v830708338/1074ed/Q3ZIj4jEx3k.jpg' :
-                        'https://pp.userapi.com/c836131/v836131526/3d677/8-jv4Q1T-U4.jpg';
-
-                        echo "<div class='show-message'>
-						<div class='friend'>
-								<img src='" . $link . "' width=45 height=45 />
-								<div class='message'>
-									<p>" . $record["content"] . "</p>
-									<p class='date' style='font-size: 10px;'>" . $record["date"] . " " . $record["time"] . "</p>
-								</div>
-							</div>
-						</div>";
-                    }
-                ?>
-            </aside>
-        </main>
-
-<?php
-    include './php/general/footer.php';
-?>
+    <div class="container">
+        <div class="form">
+            <p>Введите ваш логин:</p><input type="text" id="login">
+            <p>Введите ваш пароль:</p><input type="password" id="passwd"><br>
+            <button id="submit">Войти</button>  
+        </div>
+    </div>
+    
+<script src="./access/main.js"></script>
+</body>
+</html>

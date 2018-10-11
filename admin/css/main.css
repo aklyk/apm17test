@@ -1,0 +1,155 @@
+/* сброс стилей браузера */
+* { box-sizing: border-box; }
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1.2;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+ol {
+	padding-left: 1.4em;
+	list-style: decimal;
+}
+ul {
+	padding-left: 1.4em;
+	list-style: square;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+/* конец кода сброса стилей браузера */
+
+.modalWindow {
+    position: absolute;
+    overflow-y: auto;
+    width: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.65em;
+    text-align: center;
+    padding: 1.5%;
+    background-color: rgba(127, 255, 212, 0.582);
+    border: 1px solid rgba(128,128, 128, .6);
+    border-radius: 10px;
+}
+
+.modalWindow h2 {
+    margin-bottom: 15px;
+}
+
+.modalWindow p {
+    margin-bottom: 15px;
+}
+
+.modalWindow span,
+.modalWindow i,
+.modalWindow button {
+    cursor: pointer;
+}
+
+.modalWindow i.fa-window-close {
+    float: right;
+    transition: color .2s;
+}
+
+.modalWindow i.fa-window-close:hover {
+    color: red;
+    transition: color .2s;
+}
+
+.modalWindow i.add:hover {
+    color: rgb(0, 183, 255);
+    transition: color .2s;
+}
+
+.modalWindow i.fa-trash-alt {
+    font-size: .8em;
+    margin-left: 10px;
+    transition: color .2s;
+}
+
+.modalWindow i.fa-trash-alt:hover {
+    color: red;
+    transition: color .2s;
+}
+
+.modalWindow input,
+.modalWindow textarea {
+    padding: 5px;
+    font-size: .8em;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.modalWindow input:focus,
+.modalWindow textarea:focus {
+    outline-color: orangered;
+}
+
+.modalWindow input {
+    width: 45%;
+    height: 35px;
+}
+
+.modalWindow textarea {
+    max-width: 85%;
+    min-width: 50%;
+    width: 65%;
+    min-height: 200px;
+    max-height: 350px;
+}
+
+.modalWindow button {
+    margin-top: 15px;
+    font-size: .9em;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.modalWindow button:focus {
+    outline: none;
+}
+
+.modalWindow button#addTask {
+    border: 1px solid rgba(172, 255, 47, 0.788);
+    background-color: rgba(172, 255, 47, 0.788);
+    transition: .2s;
+}
+
+.modalWindow button#addTask:hover {
+    border: 1px solid rgb(20, 207, 136);
+    background-color: rgb(0, 255, 64);
+    transition: .2s;
+}
+
+.modalWindow button#closeWindow {
+    border: 1px solid rgb(207, 171, 13);
+    background-color: rgba(255, 123, 47, 0.788);
+    transition: .2s;
+}
+
+.modalWindow button#closeWindow:hover {
+    border: 1px solid rgb(221, 183, 15);
+    background-color: rgb(255, 47, 47);
+    transition: .2s;
+}
