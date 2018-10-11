@@ -1,0 +1,5 @@
+function journal(): void {
+
+    // code
+
+}

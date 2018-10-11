@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "outDir": "./js/",
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "esnext",
+    "allowJs": true
+  }
+}

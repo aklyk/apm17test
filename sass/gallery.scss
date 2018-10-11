@@ -1,0 +1,129 @@
+@import './variables.scss';
+
+.gallery {
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+
+    img {
+        transition: .2s box-shadow;
+    }
+    img:hover {
+        box-shadow: 0px 0px 20px 8px rgba(117, 129, 138, 1);
+        transition: .2s box-shadow;
+    }
+
+    .mainImg {
+        flex: 2;
+
+        img {
+            width: 95%;
+            height: 450px;
+            display: block;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+    }
+
+    .subImg {
+        flex: 1.3;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+
+        img {
+            width: 49%;
+            height: 49%;
+            margin-bottom: 1.5%;
+            box-sizing: border-box;
+            cursor: pointer;
+            transition: .2s box-shadow;
+        }
+        img:hover {
+            box-shadow: 0px 0px 20px 8px rgba(117, 129, 138, 1);
+            transition: .2s box-shadow;
+        }
+    }
+}
+
+.content {
+    width: 90%;
+    margin: 0 auto;
+    padding: 1.25%;
+    font-family: $mainDeadlines;
+    font-size: 2em;
+
+    p {
+        margin-top: 15px;
+        font-family: $mainTimeTableP;
+        font-size: .8em;
+    }
+}
+
+.detailyWindow {
+    &.beforeShown {
+        opacity: 0;
+        animation-name: slow_show;
+        animation-duration: .2s;
+        animation-fill-mode: forwards;
+    }
+    &.beforeHide {
+        opacity: 1;
+        animation-name: slow_hide;
+        animation-duration: .2s;
+        animation-fill-mode: forwards;
+    }
+
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgb(41, 39, 39);
+    padding: 2.5% 0;
+
+    img {
+        display: block;
+        width: 90%;
+        height: 90%;
+        margin: 0 auto;
+    }
+
+    span {
+        float: right;
+        margin-top: -15px;
+        margin-right: 15px;
+        font-family: $mainDeadlines;
+        font-size: 2.5em;
+        cursor: pointer;
+        color: #fff;
+        transition: color .2s;
+
+        &:hover {
+            color: rgba(117, 129, 138, .8);
+            transition: color .2s;
+        }
+    }
+}
+
+@keyframes slow_show {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slow_hide {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
